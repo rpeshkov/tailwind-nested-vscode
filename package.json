@@ -1,0 +1,64 @@
+{
+  "name": "tailwind-nested",
+  "displayName": "Tailwind Nested",
+  "description": "Improve Tailwind classes editing with nested style",
+  "publisher": "RomanPeshkov",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rpeshkov/tailwind-nested-vscode"
+  },
+  "version": "0.0.1",
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.88.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "tailwind-nested.toggle",
+        "title": "Toggle",
+        "category": "Tailwind Nested"
+      }
+    ],
+    "keybindings":[
+      {
+        "command": "tailwind-nested.toggle",
+        "key": "ctrl+alt+e"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.88.0",
+    "@typescript-eslint/eslint-plugin": "^7.4.0",
+    "@typescript-eslint/parser": "^7.4.0",
+    "@vscode/test-cli": "^0.0.8",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "arrowParens": "avoid"
+  }
+}
