@@ -12,5 +12,5 @@ Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how 
 
 - Initial release
 
-[0.0.2]: https://github.com/rpeshkov/tailwind-nested-vscode/compare/v0.0.1...v0.0.2
+[0.0.2]: https://github.com/rpeshkov/tailwind-nested-vscode/compare/0.0.1...0.0.2
 [0.0.1]: https://github.com/rpeshkov/tailwind-nested-vscode/releases/tag/0.0.1
