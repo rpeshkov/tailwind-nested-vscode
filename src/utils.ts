@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/naming-convention
 import _ from 'lodash';
 import * as vscode from 'vscode';
+import { getIndentSize } from './editor';
 
 /**
  * Function that checks whether provided class definition represents nested format
@@ -28,6 +29,8 @@ export function countLeadingSpaces(text: string) {
 }
 
 export function expand(text: string) {
+  const editorIndentLevel = getIndentSize();
+
   const prefix: string[] = [];
   const result: string[] = [];
   const items = text.split('\n');
@@ -50,7 +53,7 @@ export function expand(text: string) {
 
     if (indent === currentLevel) {
       prefix.pop();
-      currentLevel -= 2;
+      currentLevel -= editorIndentLevel;
     }
 
     if (indent >= currentLevel && isGroup) {
@@ -65,12 +68,13 @@ export function expand(text: string) {
 }
 
 export function traverse(structure: object, level: number = 0) {
+  const indent = getIndentSize();
   const result: string[] = [];
   for (const [k, v] of Object.entries(structure)) {
     if (!v) {
-      result.push(' '.repeat(level * 2) + k.trim());
+      result.push(' '.repeat(level * indent) + k.trim());
     } else {
-      result.push(' '.repeat(level * 2) + k + ':');
+      result.push(' '.repeat(level * indent) + k + ':');
       result.push(...traverse(v, level + 1));
     }
   }
