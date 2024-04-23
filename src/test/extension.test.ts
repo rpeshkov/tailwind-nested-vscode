@@ -13,3 +13,6 @@ suite('Extension Test Suite', () => {
 		assert.strictEqual(-1, [1, 2, 3].indexOf(0));
 	});
 });
+
+// For testing
+// text-sky-500 hover:text-sky-600

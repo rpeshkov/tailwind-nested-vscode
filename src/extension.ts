@@ -2,13 +2,7 @@ import * as vscode from 'vscode';
 import { expand, findStringRange, isStructured, structurize, traverse } from './utils';
 
 export function activate(context: vscode.ExtensionContext) {
-  let disposable = vscode.commands.registerCommand('tailwind-nested.toggle', () => {
-    const editor = vscode.window.activeTextEditor;
-
-    if (!editor) {
-      return;
-    }
-
+  let disposable = vscode.commands.registerTextEditorCommand('tailwind-nested.toggle', (editor) => {
     // Not bothering with user-selected area for now
     if (!editor.selection.isEmpty) {
       return;
