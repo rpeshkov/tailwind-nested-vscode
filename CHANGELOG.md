@@ -4,8 +4,13 @@ All notable changes to the "Tailwind Nested" extension will be documented in thi
 
 Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
 
+## [0.0.2] - 2024-04-23
+
+- Added indentation settings handling
+
 ## [0.0.1] - 2024-04-21
 
 - Initial release
 
+[0.0.2]: https://github.com/rpeshkov/tailwind-nested-vscode/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/rpeshkov/tailwind-nested-vscode/releases/tag/0.0.1
