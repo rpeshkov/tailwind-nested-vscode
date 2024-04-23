@@ -88,7 +88,7 @@ export function structurize(text: string): object {
   for (const item of items) {
     const atoms = item.split(':');
     _.set(structure, atoms, null);
-  }
+}
   return structure;
 }
 
