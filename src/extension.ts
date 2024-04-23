@@ -1,18 +1,15 @@
 import * as vscode from 'vscode';
 import { expand, findStringRange, isStructured, structurize, traverse } from './utils';
+import { getIndentSize } from './editor';
 
 export function activate(context: vscode.ExtensionContext) {
-  let disposable = vscode.commands.registerCommand('tailwind-nested.toggle', () => {
-    const editor = vscode.window.activeTextEditor;
-
-    if (!editor) {
-      return;
-    }
-
+  let disposable = vscode.commands.registerTextEditorCommand('tailwind-nested.toggle', editor => {
     // Not bothering with user-selected area for now
     if (!editor.selection.isEmpty) {
       return;
     }
+
+    const indent = getIndentSize();
 
     const stringRange = findStringRange(editor);
     const startIndent = editor.document.lineAt(
@@ -22,7 +19,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     if (!isStructured(text)) {
       const structure = structurize(text);
-      const padding = ' '.repeat(startIndent + 2);
+      const padding = ' '.repeat(startIndent + indent);
       const lines = [...traverse(structure), ''].map(x => padding + x);
 
       editor.edit(x => {
