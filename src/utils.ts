@@ -82,11 +82,30 @@ export function traverse(structure: object, level: number = 0) {
   return result.filter(x => x);
 }
 
+function splitOn(slicable: string, indices: number[]) {
+  return [-1, ...indices].map((n, i, m) => slicable.slice(n+1, m[i + 1]));
+}
+
 export function structurize(text: string): object {
   const structure = {};
   const items = text.split(' ').filter(x => x);
   for (const item of items) {
-    const atoms = item.split(':');
+    let bracket = 0;
+    const positions: number[] = [];
+    for (let i = 0; i < item.length - 1; ++i) {
+      const ch = item[i];
+      if (ch === '[') {
+        bracket++;
+      }
+      if (ch === ']') {
+        bracket--;
+      }
+      if (ch === ':' && bracket === 0) {
+        positions.push(i);
+      }
+    }
+
+    const atoms = splitOn(item, positions);
     _.set(structure, atoms, null);
 }
   return structure;
