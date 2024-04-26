@@ -123,6 +123,38 @@ suite('Structurize', () => {
         },
       },
     },
+
+    {
+      input: '[&:nth-child(3)]:underline',
+      structure: {
+        '[&:nth-child(3)]': {
+          'underline': null
+        }
+      }
+    },
+    {
+      input: 'flex [@supports(display:grid)]:grid',
+      structure: {
+        'flex': null,
+        '[@supports(display:grid)]': {
+          'grid': null
+        }
+      }
+    },
+    {
+      input: '[--variations-gap:theme(spacing[2])]',
+      structure: {
+        '[--variations-gap:theme(spacing[2])]': null
+      }
+    },
+    {
+      input: '[@media(any-hover:hover){&:hover}]:opacity-100',
+      structure: {
+        '[@media(any-hover:hover){&:hover}]': {
+          'opacity-100': null
+        }
+      }
+    }
   ];
 
   for (const c of cases) {
